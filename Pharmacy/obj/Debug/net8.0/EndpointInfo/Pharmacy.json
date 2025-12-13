@@ -1,0 +1,341 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Pharmacy",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/Drugs": {
+      "get": {
+        "tags": [
+          "Drugs"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Drugs"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "Name": {
+                    "type": "string"
+                  },
+                  "ImageUrl": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "SellingPrice": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "PurchasingPrice": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "Barcode": {
+                    "type": "string"
+                  },
+                  "DescriptionBeforeUse": {
+                    "type": "string"
+                  },
+                  "DescriptionHowToUse": {
+                    "type": "string"
+                  },
+                  "DescriptionSideEffects": {
+                    "type": "string"
+                  },
+                  "RequiresPrescription": {
+                    "type": "boolean"
+                  },
+                  "DrugType": {
+                    "type": "string"
+                  },
+                  "Manufacturer": {
+                    "type": "string"
+                  },
+                  "ExpirationDate": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "ShelfAmount": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "StoredAmount": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "LowAmount": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "SubAmountQuantity": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "Tags": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "encoding": {
+                "Name": {
+                  "style": "form"
+                },
+                "ImageUrl": {
+                  "style": "form"
+                },
+                "SellingPrice": {
+                  "style": "form"
+                },
+                "PurchasingPrice": {
+                  "style": "form"
+                },
+                "Barcode": {
+                  "style": "form"
+                },
+                "DescriptionBeforeUse": {
+                  "style": "form"
+                },
+                "DescriptionHowToUse": {
+                  "style": "form"
+                },
+                "DescriptionSideEffects": {
+                  "style": "form"
+                },
+                "RequiresPrescription": {
+                  "style": "form"
+                },
+                "DrugType": {
+                  "style": "form"
+                },
+                "Manufacturer": {
+                  "style": "form"
+                },
+                "ExpirationDate": {
+                  "style": "form"
+                },
+                "ShelfAmount": {
+                  "style": "form"
+                },
+                "StoredAmount": {
+                  "style": "form"
+                },
+                "LowAmount": {
+                  "style": "form"
+                },
+                "SubAmountQuantity": {
+                  "style": "form"
+                },
+                "Tags": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Drugs/{id}": {
+      "get": {
+        "tags": [
+          "Drugs"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Drugs"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DrugUpdateDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DrugUpdateDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DrugUpdateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Drugs"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Drugs/search": {
+      "get": {
+        "tags": [
+          "Drugs"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "barcode",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "tags",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "DrugUpdateDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "sellingPrice": {
+            "type": "number",
+            "format": "double"
+          },
+          "purchasingPrice": {
+            "type": "number",
+            "format": "double"
+          },
+          "barcode": {
+            "type": "string",
+            "nullable": true
+          },
+          "drugType": {
+            "type": "string",
+            "nullable": true
+          },
+          "expirationDate": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "shelfAmount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "storedAmount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "lowAmount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "subAmountQuantity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}
